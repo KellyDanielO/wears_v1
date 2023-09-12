@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'screens/onboarding.dart';
+import 'constants/colors.dart';
+import 'screens/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,8 +19,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        scaffoldBackgroundColor: AppColors.background,
+        appBarTheme: const AppBarTheme(backgroundColor: AppColors.background, scrolledUnderElevation: 0),
       ),
-      home: const OnboardingScreen(),
+      home: const HomeScreen(),
     );
   }
 }
