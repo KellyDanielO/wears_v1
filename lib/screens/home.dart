@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
 import '../constants/colors.dart';
+import '../controllers/utls_controller.dart';
 import '../widget/product_card.dart';
+import 'search.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,6 +17,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final UtlsControllers _utlsControllers = UtlsControllers();
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -24,47 +27,45 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: false,
         title: Text(
           'Search Product',
-          style: TextStyle(color: AppColors.color, fontSize: width * .01 + 16),
+          style: TextStyle(
+              color: AppColors.color,
+              fontSize: width * .01 + 16,
+              fontWeight: FontWeight.bold),
         ),
         actions: <Widget>[
-          GestureDetector(
-            onTap: () {
-              print('object');
-            },
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    width: 35,
-                    height: 4,
-                    decoration: BoxDecoration(
-                      color: AppColors.color,
-                      borderRadius: BorderRadius.circular(25),
-                    ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  width: 35,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: AppColors.color,
+                    borderRadius: BorderRadius.circular(25),
                   ),
-                  SizedBox(height: height * .005),
-                  Container(
-                    width: 25,
-                    height: 4,
-                    decoration: BoxDecoration(
-                      color: AppColors.color,
-                      borderRadius: BorderRadius.circular(25),
-                    ),
+                ),
+                SizedBox(height: height * .005),
+                Container(
+                  width: 25,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: AppColors.color,
+                    borderRadius: BorderRadius.circular(25),
                   ),
-                  SizedBox(height: height * .005),
-                  Container(
-                    width: 15,
-                    height: 4,
-                    decoration: BoxDecoration(
-                      color: AppColors.color,
-                      borderRadius: BorderRadius.circular(25),
-                    ),
+                ),
+                SizedBox(height: height * .005),
+                Container(
+                  width: 15,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: AppColors.color,
+                    borderRadius: BorderRadius.circular(25),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           )
         ],
@@ -74,29 +75,34 @@ class _HomeScreenState extends State<HomeScreen> {
         child: ListView(
           physics: const BouncingScrollPhysics(),
           children: <Widget>[
-            SizedBox(height: height * .02),
-            Container(
-              decoration: BoxDecoration(
-                color: AppColors.color,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
-              child: Row(
-                children: <Widget>[
-                  Icon(
-                    Icons.search,
-                    size: width * .01 + 22,
-                    color: AppColors.background.withOpacity(.6),
-                  ),
-                  SizedBox(width: width * .02),
-                  Text(
-                    'Search',
-                    style: TextStyle(
-                      color: AppColors.background.withOpacity(.7),
-                      fontSize: width * .01 + 16,
+            // SizedBox(height: height * .02),
+            GestureDetector(
+              onTap: () =>
+                  _utlsControllers.moveTo(const SearchScreen(), context),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: AppColors.color,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+                child: Row(
+                  children: <Widget>[
+                    Icon(
+                      Icons.search,
+                      size: width * .01 + 22,
+                      color: AppColors.background.withOpacity(.6),
                     ),
-                  ),
-                ],
+                    SizedBox(width: width * .02),
+                    Text(
+                      'Search',
+                      style: TextStyle(
+                        color: AppColors.background.withOpacity(.7),
+                        fontSize: width * .01 + 16,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             SizedBox(height: height * .02),
@@ -211,6 +217,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: TextStyle(
                           color: AppColors.color, fontSize: width * .01 + 14),
                     ),
+                    SizedBox(width: width * .01),
                     Icon(
                       Ionicons.caret_down_outline,
                       size: width * .01 + 16,
@@ -271,6 +278,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: TextStyle(
                           color: AppColors.color, fontSize: width * .01 + 14),
                     ),
+                    SizedBox(width: width * .01),
                     Icon(
                       Ionicons.caret_down_outline,
                       size: width * .01 + 16,
@@ -306,7 +314,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ProductCard(
                     height: height,
                     width: width,
-                    image: 'assets/images/shoes-3.jpg',
+                    image: 'assets/images/shoes-6.jpg',
                     name: 'Lorem Ipsum',
                     price: '500',
                   ),
