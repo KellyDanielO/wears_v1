@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_print
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
@@ -26,11 +25,13 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         centerTitle: false,
         title: Text(
-          'Search Product',
+          'SMX',
           style: TextStyle(
-              color: AppColors.color,
-              fontSize: width * .01 + 16,
-              fontWeight: FontWeight.bold),
+            color: AppColors.color,
+            fontSize: width * .01 + 24,
+            fontFamily: 'Aclonica',
+            fontWeight: FontWeight.bold,
+          ),
         ),
         actions: <Widget>[
           Container(
